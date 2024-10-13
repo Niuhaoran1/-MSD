@@ -1,0 +1,75 @@
+import java.util.ArrayList;  
+import java.util.List;  
+import java.util.Scanner;  
+  
+// 图书类  
+class Book {  
+    private String title;  
+    private String author;  
+    private String isbn;  
+  
+    public Book(String title, String author, String isbn) {  
+        this.title = title;  
+        this.author = author;  
+        this.isbn = isbn;  
+    }  
+  
+    public String getTitle() {  
+        return title;  
+    }  
+  
+    public String getAuthor() {  
+        return author;  
+    }  
+  
+    public String getIsbn() {  
+        return isbn;  
+    }  
+  
+    @Override  
+    public String toString() {  
+        return "Title: " + title + ", Author: " + author + ", ISBN: " + isbn;  
+    }  
+}  
+  
+// 图书管理系统类  
+class LibraryManagementSystem {  
+    private List<Book> library;  
+  
+    public LibraryManagementSystem() {  
+        library = new ArrayList<>();  
+    }  
+  
+    // 添加图书  
+    public void addBook(Book book) {  
+        library.add(book);  
+        System.out.println("Book added successfully!");  
+    }  
+  
+    // 删除图书  
+    public void deleteBook(String isbn) {  
+        library.removeIf(book -> book.getIsbn().equals(isbn));  
+        System.out.println("Book deleted successfully or book not found!");  
+    }  
+  
+    // 查看所有图书  
+    public void viewBooks() {  
+        if (library.isEmpty()) {  
+            System.out.println("No books in the library.");  
+        } else {  
+            for (Book book : library) {  
+                System.out.println(book);  
+            }  
+        }  
+    }  
+  
+    // 搜索图书  
+    public void searchBook(String title) {  
+        for (Book book : library) {  
+            if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {  
+                System.out.println(book);  
+            }  
+        }  
+    }  
+}  
+  
